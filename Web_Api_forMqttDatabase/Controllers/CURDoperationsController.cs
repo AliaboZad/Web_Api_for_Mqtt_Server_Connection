@@ -21,5 +21,17 @@ namespace Web_Api_forMqttDatabase.Controllers
             await _db.SaveChangesAsync();
             return Ok(g);
         }
+        [HttpPost]
+        public async Task<IActionResult> Post(Te te)
+        {
+            var s = new Te
+            {
+                Id = te.Id,
+                Stringvalue = te.Stringvalue
+            };
+            await _db.Tes.AddAsync(s);
+            await _db.SaveChangesAsync();
+            return Ok("Value String is Added Successfully");
+        }
     }
 }
